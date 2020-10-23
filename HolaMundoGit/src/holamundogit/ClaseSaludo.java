@@ -15,6 +15,9 @@ public class ClaseSaludo {
     public ClaseSaludo(String nombre){
         this.nombre=nombre;
         System.out.println("Hola "+nombre+" desde GitHub");
+        
+        System.out.println("\nModifico la clase la Primera vez");
+        
     }
     
 }

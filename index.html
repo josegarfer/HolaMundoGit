@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🚀 GitHub Pages OK</title>
+  <meta name="description" content="Página mínima para probar despliegue en GitHub Pages" />
+  <style>
+    :root { --max: 780px; }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      display: grid; place-items: center; background: #0b1220; color: #e7eefc;
+    }
+    main { width: min(100% - 2rem, var(--max)); }
+    .card {
+      background: #111a2a; border: 1px solid #1c2a44; border-radius: 18px; padding: 28px; box-shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    h1 { margin: 0 0 6px; font-weight: 800; letter-spacing: .2px; }
+    .ok { display: inline-flex; align-items: center; gap: .6rem; font-weight: 700; color: #7CFC7C; }
+    .ok svg { width: 22px; height: 22px; }
+    .meta { margin-top: 16px; display: grid; gap: 8px; font-size: .95rem; }
+    code { background: #0a1322; border: 1px solid #1a2946; padding: 2px 6px; border-radius: 6px; }
+    footer { margin-top: 20px; opacity: .7; font-size: .9rem; }
+    a { color: #8ab4ff; }
+    .grid { margin-top: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .tile { background:#0b1526; border:1px solid #1a2946; border-radius:12px; padding:12px }
+    @media (max-width:640px){ .grid{ grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="card">
+      <div class="ok">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 7L9 18L4 13" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>¡Despliegue funcionando en GitHub Pages!</span>
+      </div>
+      <h1>Hola, mundo 👋</h1>
+      <p>Esta es una plantilla mínima para probar que tu sitio se sirve correctamente desde <strong>GitHub Pages</strong>.</p>
+
+      <div class="grid">
+        <div class="tile"><strong>Host:</strong> <code id="host">—</code></div>
+        <div class="tile"><strong>Ruta:</strong> <code id="path">—</code></div>
+      </div>
+
+      <div class="meta">
+        <div>Repositorio detectado: <code id="repo">—</code></div>
+        <div>Fecha de build (cliente): <code id="build">—</code></div>
+      </div>
+
+      <footer>
+        Consejos rápidos:
+        <ul>
+          <li>Nombra este archivo como <code>index.html</code> y súbelo a la rama configurada para Pages (<code>main</code> o <code>gh-pages</code>).</li>
+          <li>Si usas carpeta <code>/docs</code>, pon aquí el <code>index.html</code>.</li>
+          <li>Para contenido estático (HTML/CSS/JS) no necesitas Jekyll. Si quieres desactivarlo, añade <code>.nojekyll</code> en la raíz.</li>
+        </ul>
+      </footer>
+    </section>
+  </main>
+
+  <script>
+    // Rellena datos útiles para comprobar que todo responde
+    const host = window.location.host;
+    const path = window.location.pathname;
+    const parts = path.replace(/^\//,'').split('/');
+    // Heurística: user.github.io/<repo>/... => repo en índice 1
+    const repoGuess = parts[0] && parts[0] !== '' ? parts[0] : '(user page)';
+
+    document.getElementById('host').textContent = host;
+    document.getElementById('path').textContent = path || '/';
+    document.getElementById('repo').textContent = repoGuess;
+    document.getElementById('build').textContent = new Date().toLocaleString();
+
+    // Aviso si la ruta no termina en /index.html en entornos locales
+    if (!location.href.includes('github.io') && !location.pathname.endsWith('/')) {
+      console.log('Sugerencia: prueba a abrir la carpeta con un servidor local o usa la ruta / para simular GitHub Pages.');
+    }
+  </script>
+</body>
+</html>
